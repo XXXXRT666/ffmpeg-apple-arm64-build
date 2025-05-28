@@ -152,8 +152,6 @@ $SCRIPT_DIR/build-libwebp.sh "$SCRIPT_DIR" "$WORKING_DIR" "$TOOL_DIR" "$CPUS" "x
 checkStatus $? "build libwebp"
 echoDurationInSections $START_TIME
 
-exit 0
-
 START_TIME=$(currentTimeInSeconds)
 echoSection "compile FriBidi"
 $SCRIPT_DIR/build-fribidi.sh "$SCRIPT_DIR" "$WORKING_DIR" "$TOOL_DIR" "$CPUS" "1.0.10" > "$WORKING_DIR/build-fribidi.log" 2>&1
