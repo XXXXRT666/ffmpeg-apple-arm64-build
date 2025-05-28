@@ -16,6 +16,8 @@ jobs:
         run: |
           mkdir tmp
           cd tmp
+          ls /Library/Frameworks
+          exit 1
           bash ../build.sh
 
       - name: Pack FFmpeg Logs
