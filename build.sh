@@ -144,6 +144,14 @@ checkStatus $? "build pkg-config"
 echoDurationInSections $START_TIME
 
 START_TIME=$(currentTimeInSeconds)
+echoSection "compile libwebp"
+$SCRIPT_DIR/build-libwebp.sh "$SCRIPT_DIR" "$WORKING_DIR" "$TOOL_DIR" "$CPUS" "xxx"
+checkStatus $? "build libwebp"
+echoDurationInSections $START_TIME
+
+exit 0
+
+START_TIME=$(currentTimeInSeconds)
 echoSection "compile FriBidi"
 $SCRIPT_DIR/build-fribidi.sh "$SCRIPT_DIR" "$WORKING_DIR" "$TOOL_DIR" "$CPUS" "1.0.10" > "$WORKING_DIR/build-fribidi.log" 2>&1
 checkStatus $? "build FriBidi"
@@ -262,12 +270,6 @@ START_TIME=$(currentTimeInSeconds)
 echoSection "compile libbluray"
 $SCRIPT_DIR/build-libbluray.sh "$SCRIPT_DIR" "$WORKING_DIR" "$TOOL_DIR" "$CPUS" "xxx" > "$WORKING_DIR/build-libbluray.log" 2>&1
 checkStatus $? "build libbluray"
-echoDurationInSections $START_TIME
-
-START_TIME=$(currentTimeInSeconds)
-echoSection "compile libwebp"
-$SCRIPT_DIR/build-libwebp.sh "$SCRIPT_DIR" "$WORKING_DIR" "$TOOL_DIR" "$CPUS" "xxx" > "$WORKING_DIR/build-libwebp.log" 2>&1
-checkStatus $? "build libwebp"
 echoDurationInSections $START_TIME
 
 START_TIME=$(currentTimeInSeconds)
