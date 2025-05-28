@@ -1,3 +1,8 @@
+name: CMake Test
+
+on:
+  workflow_dispatch:
+
 jobs:
   test-header-paths:
     runs-on: macos-latest
