@@ -1,0 +1,42 @@
+jobs:
+  test-header-paths:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up CMake Test
+        run: |
+          mkdir cmake_test
+          cd cmake_test
+          cat > CMakeLists.txt <<EOF
+          cmake_minimum_required(VERSION 3.13)
+          project(DetectImageIncludes C)
+
+          include(CheckIncludeFile)
+
+          find_path(PNG_H_PATH png.h)
+          if (PNG_H_PATH)
+            message(STATUS "Found png.h at: \${PNG_H_PATH}")
+          else()
+            message(WARNING "png.h not found")
+          endif()
+
+          find_path(JPEG_H_PATH jpeglib.h)
+          if (JPEG_H_PATH)
+            message(STATUS "Found jpeglib.h at: \${JPEG_H_PATH}")
+          else()
+            message(WARNING "jpeglib.h not found")
+          endif()
+
+          find_path(GIF_H_PATH gif_lib.h)
+          if (GIF_H_PATH)
+            message(STATUS "Found gif_lib.h at: \${GIF_H_PATH}")
+          else()
+            message(WARNING "gif_lib.h not found")
+          endif()
+          EOF
+
+      - name: Run CMake
+        run: |
+          cd cmake_test
+          cmake -DCMAKE_FIND_DEBUG_MODE=ON .
