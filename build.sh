@@ -1,5 +1,8 @@
 #!/bin/sh
 
+brew list | xargs brew uninstall --force
+brew cleanup --prune=all
+
 # Option feature set to FALSE if not required and TRUE if required
 ENABLE_FFPLAY=FALSE
 ENABLE_TOPAZ=FALSE
