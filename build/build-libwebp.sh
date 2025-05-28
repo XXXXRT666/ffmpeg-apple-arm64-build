@@ -58,7 +58,7 @@ make_compile () {
   checkStatus $? "change directory failed"
 
   # build
-  make -j $4
+  CMAKE_VERBOSE_MAKEFILE=ON make -j $4 VERBOSE=1
   checkStatus $? "build of ${SOFTWARE} failed"
 
   # install
