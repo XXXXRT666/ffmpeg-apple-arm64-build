@@ -2,6 +2,7 @@
 
 brew list | xargs brew uninstall --force
 brew cleanup --prune=all
+brew install libpng libgif
 
 # Option feature set to FALSE if not required and TRUE if required
 ENABLE_FFPLAY=FALSE
